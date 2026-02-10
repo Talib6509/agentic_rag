@@ -47,7 +47,36 @@ Flow:
 - If insufficient details → Return clarification template
 
 ---
+# Tools
 
+## QueryCleanerTool
+- Removes noise and stopwords
+- Preserves important technical short terms like:
+  - AC, DC, HV, LV, IP, HP, kW
+
+---
+
+## VectorSearchTool
+- Uses Elasticsearch KNN search
+- Embedding model:
+  `sentence-transformers-multilingual-e5-base`
+- Retrieves top 5 relevant chunks
+
+---
+
+## QueryClassifierTool
+- Routes queries to:
+  - `rag_agent`
+  - `expert_support_agent`
+
+---
+
+## QueryClassifierTool2
+- Determines if expert query:
+  - Has sufficient technical detail
+  - Needs clarification
+
+---
 ##  Tech Stack
 
 - FastAPI
